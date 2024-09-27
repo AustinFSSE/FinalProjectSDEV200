@@ -1,0 +1,46 @@
+
+
+.login_container {
+    -fx-background-color: gray;
+}
+.login_container_text{
+    -fx-font-size: 1.6em;
+    -fx-font-weight: bold;
+}
+
+.login_container_main {
+    -fx-background-color: lightgray;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, darkgrey, 5, 0, 0, 7);
+    -fx-spacing: 10;
+}
+.login_container_main Button {
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(to right, darkblue, blue);
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, darkgrey, 5, 0, 0, 7);
+    -fx-spacing: 10;
+}
+
+.login_container_image {
+    -fx-spacing: 10;
+    -fx-padding: 10;
+    -fx-border-width: 1;
+    -fx-border-color: #c1a618;
+    -fx-border-radius: 4;
+    -fx-effect: dropshadow(three-pass-box, darkgray, 3, 0, 0, 3);
+}
+
+.login_container_hbox {
+    -fx-spacing: 10;
+    -fx-font-weight: bold;
+}
+
+.login_container_hbox Button {
+    -fx-text-fill: Grey;
+    -fx-background-color: Gold;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, darkgrey, 5, 0, 0, 7);
+    -fx-spacing: 10;
+}
+
