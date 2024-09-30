@@ -2,8 +2,6 @@ package com.github.austinfsse.sdev200.finalproject;
 
 import com.github.austinfsse.sdev200.finalproject.Models.Model;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;

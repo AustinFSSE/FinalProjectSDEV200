@@ -8,14 +8,18 @@
 <AnchorPane prefHeight="500.0" prefWidth="600.0" styleClass="account_container" stylesheets="@../../Styles/CreateAccount.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.austinfsse.sdev200.finalproject.Controllers.Clients.CreateAccountController">
    <VBox alignment="TOP_CENTER" fillWidth="false" layoutX="252.0" layoutY="17.0" prefHeight="437.0" prefWidth="394.0" styleClass="account_container_main" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="17.0">
       <AnchorPane prefHeight="153.0" prefWidth="170.0">
-         <VBox layoutX="29.0" layoutY="18.0" prefHeight="150.0" prefWidth="150.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="18.0">
+         <VBox alignment="CENTER" layoutX="29.0" layoutY="18.0" prefHeight="150.0" prefWidth="150.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="18.0">
             <ImageView fitHeight="150.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true" styleClass="account_container_image">
                <Image url="@../../Images/bank.png" />
             </ImageView>
          </VBox>
       </AnchorPane>
-      <Label styleClass="create_your_account" text="Create Your Account" />
-      <VBox alignment="CENTER_LEFT" prefHeight="126.0" prefWidth="344.0" styleClass="account_container_hbox">
+      <VBox alignment="CENTER" prefHeight="18.0" prefWidth="354.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="11.0" prefWidth="349.0" styleClass="create_your_account" text="Create Your Account" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="126.0" prefWidth="344.0" styleClass="account_container_hbox">
          <HBox alignment="CENTER_RIGHT" prefHeight="25.0" prefWidth="315.0" styleClass="account_container_hbox" stylesheets="@../../Styles/CreateAccount.css">
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" wrappingWidth="66.359375" />
             <TextField fx:id="fname_fld" prefHeight="25.0" prefWidth="94.0" />
@@ -31,6 +35,6 @@
             <TextField fx:id="pwd_fld" prefHeight="25.0" prefWidth="297.0" />
          </HBox>
       </VBox>
-      <Button fx:id="create_acc_btn" mnemonicParsing="false" prefHeight="25.0" prefWidth="300.0" styleClass="account_container_main" stylesheets="@../../Styles/CreateAccount.css" text="Create Account" />
+      <Button fx:id="create_acc_btn" alignment="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="343.0" styleClass="account_container_main" stylesheets="@../../Styles/CreateAccount.css" text="Create Account" />
    </VBox>
 </AnchorPane>

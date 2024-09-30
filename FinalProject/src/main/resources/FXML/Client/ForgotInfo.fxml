@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" stylesheets="@../../Styles/ForgotInfo.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.austinfsse.sdev200.finalproject.Controllers.Clients.ForgotLoginInfo">
+   <children>
+      <VBox alignment="CENTER" layoutX="103.0" layoutY="44.0" prefHeight="200.0" prefWidth="100.0" styleClass="forgot_container_main" stylesheets="@../../Styles/ForgotInfo.css" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="44.0">
+         <children>
+            <AnchorPane prefHeight="23.0" prefWidth="394.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="90.0" prefWidth="394.0">
+                     <children>
+                        <ImageView fitHeight="80.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/user.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="forms" text="Please Fill out this form" />
+            <VBox alignment="CENTER" prefHeight="109.0" prefWidth="394.0" styleClass="forms" stylesheets="@../../Styles/ForgotInfo.css">
+               <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="134.0" prefWidth="374.0" styleClass="forms">
+                     <VBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="118.0" styleClass="forms">
+                        <Label text="First Name" />
+                        <Label text="Last Name" />
+                        <Label prefHeight="24.0" prefWidth="78.0" text="Email" />
+                     </VBox>
+                     <VBox alignment="CENTER_RIGHT" prefHeight="127.0" prefWidth="206.0" styleClass="forms">
+                        <TextField fx:id="fname_fld" prefHeight="29.0" prefWidth="108.0" />
+                        <TextField fx:id="lname_fld" prefHeight="29.0" prefWidth="186.0" />
+                        <TextField fx:id="email_fld" />
+                     </VBox>
+                  </HBox>
+               </AnchorPane>
+               <Button fx:id="submit" mnemonicParsing="false" prefHeight="37.0" prefWidth="322.0" styleClass="forgot_container_main" text="Submit" />
+            </VBox>
+         </children></VBox>
+   </children>
+</AnchorPane>

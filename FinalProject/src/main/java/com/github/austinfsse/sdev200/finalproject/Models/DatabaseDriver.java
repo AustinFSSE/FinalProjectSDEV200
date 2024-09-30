@@ -1,13 +1,15 @@
 package com.github.austinfsse.sdev200.finalproject.Models;
 
-import com.github.austinfsse.sdev200.finalproject.Controllers.Clients.CreateAccountController;
-
 import java.sql.*;
 import java.util.Random;
 
 public class DatabaseDriver {
 
     private static final String DB_URL = "jdbc:sqlite:javafxbank.db";
+    public static String getDbUrl() {
+        return DB_URL;
+    }
+
     public Connection connect() {
         Connection conn = null;
         try {
@@ -61,14 +63,13 @@ public class DatabaseDriver {
             pstmt.setString(6, accountNumber);
             pstmt.setInt(7, balance);
 
-            createTable(); // Call this once before any insertions
+
             pstmt.executeUpdate();
             System.out.println("Inserted record");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
 
     private String generateAccNumber() {
         StringBuilder accountNumber = new StringBuilder();
@@ -78,5 +79,4 @@ public class DatabaseDriver {
         }
         return accountNumber.toString();
     }
-
 }

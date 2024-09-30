@@ -32,10 +32,9 @@ public class CreateAccountController implements Initializable {
             String lastName = lname_fld.getText();
             String email = email_fld.getText();
             String pwd = pwd_fld.getText();
-            databaseDriver.insertRecord(firstName, lastName, email, pwd, generateUserName(firstName, lastName));
+            databaseDriver.insertRecord(firstName, lastName, email, pwd, getUserName(firstName, lastName));
             onClientDashboard();
         });
-
     }
 
     public StringBuilder getUserName(String firstName, String lastName) {
@@ -56,7 +55,7 @@ public class CreateAccountController implements Initializable {
     }
 
     private void onClientDashboard() {
-        Model.getInstance().getViewFactory().showClientDashboard();
+        Model.getInstance().getViewFactory().showLoginWindow();
     }
 
 

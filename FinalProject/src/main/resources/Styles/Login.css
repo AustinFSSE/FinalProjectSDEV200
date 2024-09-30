@@ -18,7 +18,6 @@
     -fx-text-fill: white;
     -fx-background-color: linear-gradient(to right, darkblue, blue);
     -fx-background-radius: 20;
-    -fx-effect: dropshadow(three-pass-box, darkgrey, 5, 0, 0, 7);
     -fx-spacing: 10;
 }
 
@@ -29,6 +28,12 @@
     -fx-border-color: #c1a618;
     -fx-border-radius: 4;
     -fx-effect: dropshadow(three-pass-box, darkgray, 3, 0, 0, 3);
+}
+
+.error_lbl {
+    -fx-font-size: 1.3em;
+    -fx-font-weight: bold;
+    -fx-text-fill: red;
 }
 
 .login_container_hbox {
@@ -42,5 +47,17 @@
     -fx-background-radius: 20;
     -fx-effect: dropshadow(three-pass-box, darkgrey, 5, 0, 0, 7);
     -fx-spacing: 10;
+}
+.login_container_hbox_forgot_links {
+    -fx-background-color: lightgray;
+    -fx-spacing: 10;
+}
+.login_container_hbox_forgot_links Button {
+    -fx-text-fill: Blue;
+    -fx-font-size: 1.1em;
+    -fx-alignment: center;
+}
+.login_container_hbox_forgot_links LIne {
+    -fx-alignment: center;
 }
 

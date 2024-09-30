@@ -1,0 +1,34 @@
+
+
+.forgot_container {
+    -fx-background-color: gray;
+}
+.forgot_container Label {
+    -fx-font-size: 1.6em;
+    -fx-font-weight: bold;
+}
+.forgot_container_main {
+    -fx-background-color: lightgray;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(three-pass-box, darkgrey, 5, 0, 0, 7);
+    -fx-spacing: 10;
+    -fx-padding: 10;
+}
+.forms {
+    -fx-spacing: 10;
+    -fx-padding: 10;
+}
+.forms Label {
+    -fx-font-size: 1.4em;
+    -fx-font-weight: 900;
+}
+.forms TextField {
+    -fx-pref-width: 400;
+    -fx-pref-height: 10;
+    -fx-border-color: gold;
+    -fx-border-style: dashed;
+    -fx-border-width: 2;
+}
+.forms Button {
+    -fx-background-color: gold;
+}

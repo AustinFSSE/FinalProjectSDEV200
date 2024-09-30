@@ -1,14 +1,19 @@
 package com.github.austinfsse.sdev200.finalproject.Models;
 
-import com.github.austinfsse.sdev200.finalproject.Views.ViewFactory;
+import com.github.austinfsse.sdev200.finalproject.Stages.DisplayStages;
+
+
+
 
 public class Model {
     private static Model model;
-    private final ViewFactory viewFactory;
+    private final DisplayStages displayStages;
+    private DatabaseDriver driver;
+    private static boolean successfulLogin;
 
 
     private Model() {
-        this.viewFactory = new ViewFactory();
+        this.displayStages = new DisplayStages();
     }
 
     public static Model getInstance() {
@@ -18,7 +23,8 @@ public class Model {
         return model;
     }
 
-    public ViewFactory getViewFactory() {
-        return viewFactory;
+    public DisplayStages getViewFactory() {
+        return displayStages;
     }
+
 }
