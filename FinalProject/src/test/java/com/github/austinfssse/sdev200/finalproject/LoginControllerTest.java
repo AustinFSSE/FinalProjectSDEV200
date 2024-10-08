@@ -24,7 +24,7 @@ public class LoginControllerTest {
     @Start
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "FinalProject/src/main/resources/FXML/Client/Login.fxml"));
+                "/FXML/Client/Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         primaryStage.setScene(scene);
         primaryStage.show();

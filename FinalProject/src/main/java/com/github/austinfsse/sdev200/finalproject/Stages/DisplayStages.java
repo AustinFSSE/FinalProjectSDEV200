@@ -21,11 +21,12 @@ public class DisplayStages {
         createStage(fxmlLoader);
     }
     public void showClientDashboard() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/Client/CreateAccount.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/Client/ClientDashboard.fxml"));
         createStage(fxmlLoader);
     }
     public void showForgotInfo() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/Client/ForgotInfo.fxml"));
+        createStage(loader);
     }
 
 
@@ -42,6 +43,7 @@ public class DisplayStages {
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setTitle("JavaFx FinalProject");
         stage.show();
+
 
     }
 

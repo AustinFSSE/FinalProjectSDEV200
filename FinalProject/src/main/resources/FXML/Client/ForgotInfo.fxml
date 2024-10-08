@@ -21,8 +21,13 @@
                      </children>
                   </VBox>
                </children></AnchorPane>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="forms" text="Please Fill out this form" />
+            <Label fx:id="usr_pwd_lbl" styleClass="usr_pwd_lbl" stylesheets="@../../Styles/ForgotInfo.css" />
             <VBox alignment="CENTER" prefHeight="109.0" prefWidth="394.0" styleClass="forms" stylesheets="@../../Styles/ForgotInfo.css">
+               <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="forms" text="Please Fill out this form" wrappingWidth="156.140625">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Text>
                <AnchorPane prefHeight="200.0" prefWidth="200.0">
                   <HBox alignment="CENTER" prefHeight="134.0" prefWidth="374.0" styleClass="forms">
                      <VBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="118.0" styleClass="forms">
@@ -37,7 +42,17 @@
                      </VBox>
                   </HBox>
                </AnchorPane>
-               <Button fx:id="submit" mnemonicParsing="false" prefHeight="37.0" prefWidth="322.0" styleClass="forgot_container_main" text="Submit" />
+               <Label fx:id="error_lbl" styleClass="error_lbl" stylesheets="@../../Styles/ForgotInfo.css" />
+               <HBox alignment="CENTER" prefHeight="40.0" prefWidth="283.0">
+                  <children>
+                     <AnchorPane prefHeight="40.0" prefWidth="322.0">
+                        <children>
+                           <Button fx:id="login_btn" layoutX="198.0" layoutY="2.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="118.0" styleClass="forgot_container_main" stylesheets="@../../Styles/ForgotInfo.css" text="Login" />
+                           <Button fx:id="submit" layoutX="36.0" layoutY="2.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="121.0" styleClass="forgot_container_main" stylesheets="@../../Styles/ForgotInfo.css" text="Submit" />
+                        </children>
+                     </AnchorPane>
+                  </children>
+               </HBox>
             </VBox>
          </children></VBox>
    </children>

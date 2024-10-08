@@ -13,9 +13,17 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LoginController  implements Initializable {
+
+    DatabaseDriver driver = new DatabaseDriver();
+    private final ArrayList <String[]> currentUser = new ArrayList<String[]>();
+
+    public ArrayList<String[]> getCurrentUserInfo() {
+        return currentUser;
+    }
 
     public TextField username_id;
     public TextField password_id;
@@ -28,9 +36,6 @@ public class LoginController  implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-
         login_btn.setOnAction(e -> onLogin());
         createAccount_btn.setOnAction(e -> onCreateAccount());
         forgot_usr_btn.setOnAction(e -> onLogin());
@@ -44,8 +49,16 @@ public class LoginController  implements Initializable {
         Model.getInstance().getViewFactory().showCreateAccountScreen();
         Model.getInstance().getViewFactory().closeStage(stage);
     }
-    private void onForgotUsername() { Model.getInstance().getViewFactory().showForgotInfo();}
-    private void onForgotPassword() {Model.getInstance().getViewFactory().showForgotInfo();}
+    private void onForgotUsername() {
+        Stage stage = (Stage) createAccount_btn.getScene().getWindow();
+        Model.getInstance().getViewFactory().showForgotInfo();
+        stage.close();
+    }
+    private void onForgotPassword() {
+        Stage stage = (Stage) createAccount_btn.getScene().getWindow();
+        Model.getInstance().getViewFactory().showForgotInfo();
+        stage.close();
+    }
 
     private void onLogin() {
         Stage stage = (Stage) login_btn.getScene().getWindow();
@@ -53,14 +66,20 @@ public class LoginController  implements Initializable {
         String password = password_id.getText();
 
         try {
-           if (verifyLoginCredentials(username, password)) {
-               Model.getInstance().getViewFactory().showClientDashboard();
+            if (verifyLoginCredentials(username, password)) {
+                currentUser.add(driver.retrieveRecord(username));
+                Model.getInstance().getViewFactory().showClientDashboard();
                if (getSuccessfulLogin()) {
                    Model.getInstance().getViewFactory().closeStage(stage);
                }
            } else {
-                String error = "Invalid username or password";
-                error_lbl.setText(error);
+                if (driver.verifyDatabaseIsCreated()) {
+                    String error = "Invalid username or password";
+                    error_lbl.setText(error);
+                } else {
+                    Model.getInstance().getViewFactory().showCreateAccountScreen();
+                    Model.getInstance().getViewFactory().closeStage(stage);
+                }
            }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -87,7 +106,8 @@ public class LoginController  implements Initializable {
                 setSuccessfulLogin(false);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Database does not recognize credentials");
+            setSuccessfulLogin(false);
         }
         return getSuccessfulLogin();
     }

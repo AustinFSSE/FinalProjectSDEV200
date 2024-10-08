@@ -1,0 +1,21 @@
+
+.dashboard {
+    -fx-background-color: darkgray;
+}
+
+.dashboard_greeting {
+    -fx-border-radius: 10;
+    -fx-border-width: 3;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0, 0, 2);
+}
+.dashboard_greeting_label {
+    -fx-font-size: 1.5em;
+    -fx-font-weight: bold;
+}
+.dashboard_info {
+    -fx-background-color: linear-gradient(to right, darkgray, gold);
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, black, 5, 0, 0, 7);
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+}

@@ -5,6 +5,7 @@ import com.github.austinfsse.sdev200.finalproject.Models.Model;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Random;
@@ -55,7 +56,9 @@ public class CreateAccountController implements Initializable {
     }
 
     private void onClientDashboard() {
+        Stage stage = (Stage) create_acc_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().showLoginWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
     }
 
 

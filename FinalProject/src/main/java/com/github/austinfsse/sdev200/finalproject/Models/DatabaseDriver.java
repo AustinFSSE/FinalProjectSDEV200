@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class DatabaseDriver {
 
-    private static final String DB_URL = "jdbc:sqlite:javafxbank.db";
+    private static  String DB_URL = "jdbc:sqlite:javafxbank.db";
     public static String getDbUrl() {
         return DB_URL;
     }
@@ -18,6 +18,14 @@ public class DatabaseDriver {
             System.out.println(e.getMessage());
         }
         return conn;
+    }
+    public boolean verifyDatabaseIsCreated() {
+        try (Connection conn = DriverManager.getConnection(DB_URL)) {
+            return conn != null; //Database does exist
+        } catch (SQLException e) {
+            System.out.println("Database not created");
+            return false;
+        }
     }
     public void createTable() {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS people ("
@@ -32,8 +40,8 @@ public class DatabaseDriver {
                 + ");";
 
         try (Connection conn = connect();
-             Statement statement = conn.createStatement()) {
-            statement.execute(createTableSQL);
+             PreparedStatement preparedStatement = conn.prepareStatement(createTableSQL)) {
+            preparedStatement.execute();
             System.out.println("Table created");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -69,6 +77,31 @@ public class DatabaseDriver {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public String[] retrieveRecord(String username) {
+        String viewRecordSQL = "SELECT * FROM people WHERE username = ? and password = ?";
+        String[] record = new String[7];
+
+        try (Connection conn = DriverManager.getConnection(getDbUrl());
+        PreparedStatement pstmt = conn.prepareStatement(viewRecordSQL)) {
+            pstmt.setString(1, username);
+
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                record[0] = rs.getString("firstname");
+                record[1] = rs.getString("lastname");
+                record[2] = rs.getString("email");
+                record[3] = rs.getString("username");
+                record[4] = rs.getString("password");
+                record[5] = rs.getString("accountnumber");
+                record[6] = rs.getString("balance");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return record;
     }
 
     private String generateAccNumber() {

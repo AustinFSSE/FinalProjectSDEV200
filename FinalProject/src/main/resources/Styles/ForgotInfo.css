@@ -14,13 +14,17 @@
     -fx-spacing: 10;
     -fx-padding: 10;
 }
+.forgot_container_main .button {
+    -fx-spacing: 10;
+    -fx-pref-width: 100;
+}
 .forms {
     -fx-spacing: 10;
     -fx-padding: 10;
 }
 .forms Label {
     -fx-font-size: 1.4em;
-    -fx-font-weight: 900;
+    -fx-font-weight: bold;
 }
 .forms TextField {
     -fx-pref-width: 400;
@@ -31,4 +35,14 @@
 }
 .forms Button {
     -fx-background-color: gold;
+}
+.error_lbl {
+    -fx-text-fill: red;
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+}
+.usr_pwd_lbl {
+    -fx-text-fill: green;
+    -fx-font-size: 1.1em;
+    -fx-alignment: center;
 }

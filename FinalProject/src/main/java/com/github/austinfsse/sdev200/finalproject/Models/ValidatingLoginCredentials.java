@@ -1,7 +1,6 @@
 package com.github.austinfsse.sdev200.finalproject.Models;
 
 import java.sql.*;
-import java.util.Objects;
 
 public class ValidatingLoginCredentials {
     public static void main(String[] args) {
@@ -28,6 +27,7 @@ public class ValidatingLoginCredentials {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         }
 
     }
