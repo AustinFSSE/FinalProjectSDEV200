@@ -2,6 +2,7 @@ package com.github.austinfsse.sdev200.finalproject.Controllers;
 
 import com.github.austinfsse.sdev200.finalproject.Models.DatabaseDriver;
 import com.github.austinfsse.sdev200.finalproject.Models.Model;
+import com.github.austinfsse.sdev200.finalproject.Models.User;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
@@ -19,12 +20,7 @@ import java.util.ResourceBundle;
 public class LoginController  implements Initializable {
 
     DatabaseDriver driver = new DatabaseDriver();
-    private final ArrayList <String[]> currentUser = new ArrayList<String[]>();
-
-    public ArrayList<String[]> getCurrentUserInfo() {
-        return currentUser;
-    }
-
+    public String[] userInfo = new String[10];
     public TextField username_id;
     public TextField password_id;
     public Button createAccount_btn;
@@ -64,10 +60,20 @@ public class LoginController  implements Initializable {
         Stage stage = (Stage) login_btn.getScene().getWindow();
         String username = username_id.getText();
         String password = password_id.getText();
+        userInfo = driver.retrieveRecord(username);
+
+        User user = User.getInstance();
+        user.setFirstName(userInfo[0]);
+        user.setLastName(userInfo[1]);
+        user.setEmail(userInfo[2]);
+        user.setUsername(userInfo[3]);
+        user.setPassword(userInfo[4]);
+        user.setAccountNumber(userInfo[5]);
+        user.setBalance(userInfo[6]);
 
         try {
             if (verifyLoginCredentials(username, password)) {
-                currentUser.add(driver.retrieveRecord(username));
+
                 Model.getInstance().getViewFactory().showClientDashboard();
                if (getSuccessfulLogin()) {
                    Model.getInstance().getViewFactory().closeStage(stage);

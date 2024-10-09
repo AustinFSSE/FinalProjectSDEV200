@@ -3,9 +3,11 @@ package com.github.austinfsse.sdev200.finalproject.Models;
 import java.sql.*;
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class DatabaseDriver {
 
-    private static  String DB_URL = "jdbc:sqlite:javafxbank.db";
+    private static final String DB_URL = "jdbc:sqlite:javafxbank.db";
+
     public static String getDbUrl() {
         return DB_URL;
     }
@@ -19,6 +21,7 @@ public class DatabaseDriver {
         }
         return conn;
     }
+
     public boolean verifyDatabaseIsCreated() {
         try (Connection conn = DriverManager.getConnection(DB_URL)) {
             return conn != null; //Database does exist
@@ -27,13 +30,14 @@ public class DatabaseDriver {
             return false;
         }
     }
+
     public void createTable() {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS people ("
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "id INTEGER AUTOINCREMENT, "
                 + "firstname TEXT NOT NULL, "
                 + "lastname TEXT NOT NULL, "
                 + "email TEXT NOT NULL, "
-                + "username TEXT NOT NULL, "
+                + "username TEXT PRIMARY KEY NOT NULL, "
                 + "password TEXT NOT NULL, "
                 + "accountnumber TEXT NOT NULL, "
                 + "balance INTEGER NOT NULL"
@@ -80,11 +84,11 @@ public class DatabaseDriver {
     }
 
     public String[] retrieveRecord(String username) {
-        String viewRecordSQL = "SELECT * FROM people WHERE username = ? and password = ?";
+        String viewRecordSQL = "SELECT * FROM people WHERE username = ?";
         String[] record = new String[7];
 
         try (Connection conn = DriverManager.getConnection(getDbUrl());
-        PreparedStatement pstmt = conn.prepareStatement(viewRecordSQL)) {
+             PreparedStatement pstmt = conn.prepareStatement(viewRecordSQL)) {
             pstmt.setString(1, username);
 
             ResultSet rs = pstmt.executeQuery();
@@ -104,7 +108,20 @@ public class DatabaseDriver {
         return record;
     }
 
-    private String generateAccNumber() {
+    // Method to update a record
+    public void updateBalance(String username, int newBalance) {
+        String updateBalanceSQL = "UPDATE people SET balance = ? WHERE username = ?;";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(updateBalanceSQL)) {
+            pstmt.setInt(1, newBalance);
+            pstmt.setString(2, username);
+            pstmt.executeUpdate();
+            System.out.println("Balance updated for user: " + username);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    private String generateAccNumber () {
         StringBuilder accountNumber = new StringBuilder();
         Random rand = new Random();
         for (int i = 0; i < 9; i++) {

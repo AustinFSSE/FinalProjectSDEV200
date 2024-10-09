@@ -1,6 +1,12 @@
 
 .dashboard {
     -fx-background-color: darkgray;
+    -fx-spacing: 10;
+}
+.dashboard_text {
+    -fx-spacing: 10;
+    -fx-font-size: 1.2em;
+    -fx-font-family: "Calibri Light";
 }
 
 .dashboard_greeting {
@@ -9,7 +15,8 @@
     -fx-effect: dropshadow(three-pass-box, black, 2, 0, 0, 2);
 }
 .dashboard_greeting_label {
-    -fx-font-size: 1.5em;
+    -fx-text-fill: white;
+    -fx-font-size: 1.1em;
     -fx-font-weight: bold;
 }
 .dashboard_info {
@@ -18,4 +25,21 @@
     -fx-effect: dropshadow(three-pass-box, black, 5, 0, 0, 7);
     -fx-border-radius: 10;
     -fx-border-width: 2;
+}
+.dashboard_textField {
+    -fx-pref-width: 125;
+    -fx-alignment: center;
+    -fx-border-radius: 15;
+    -fx-background-color: lightblue;
+    -fx-effect: dropshadow(three-pass-box, black, 3, 0, 0, 1);
+}
+.dashboard_button {
+    -fx-pref-width: 75;
+    -fx-spacing: 10;
+    -fx-padding: 5;
+    -fx-background-color: darkblue;
+    -fx-text-fill: white;
+    -fx-text-alignment: center;
+    -fx-font-size: 1.0em;
+    -fx-font-weight: bold;
 }
