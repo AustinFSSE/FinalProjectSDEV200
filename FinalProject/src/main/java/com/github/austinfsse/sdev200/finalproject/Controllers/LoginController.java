@@ -14,10 +14,10 @@ import javafx.stage.Stage;
 import java.net.URL;
 
 import java.sql.*;
-import java.util.ArrayList;
+
 import java.util.ResourceBundle;
 
-public class LoginController  implements Initializable {
+public class LoginController implements Initializable {
 
     DatabaseDriver driver = new DatabaseDriver();
     public String[] userInfo = new String[10];
@@ -30,32 +30,37 @@ public class LoginController  implements Initializable {
     public Label error_lbl;
     private boolean successfulLogin = false;
 
+    // Initializes button actions when the scene is loaded
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         login_btn.setOnAction(e -> onLogin());
         createAccount_btn.setOnAction(e -> onCreateAccount());
-        forgot_usr_btn.setOnAction(e -> onLogin());
-        forgot_pwd_btn.setOnAction(e -> onForgotPassword());
         forgot_usr_btn.setOnAction(e -> onForgotUsername());
-
+        forgot_pwd_btn.setOnAction(e -> onForgotPassword());
     }
 
+    // Opens the Create Account screen and closes the current window
     private void onCreateAccount() {
         Stage stage = (Stage) createAccount_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().showCreateAccountScreen();
         Model.getInstance().getViewFactory().closeStage(stage);
     }
+
+    // Opens the Forgot Username screen and closes the current window
     private void onForgotUsername() {
         Stage stage = (Stage) createAccount_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().showForgotInfo();
         stage.close();
     }
+
+    // Opens the Forgot Password screen and closes the current window
     private void onForgotPassword() {
         Stage stage = (Stage) createAccount_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().showForgotInfo();
         stage.close();
     }
 
+    // Handles the login process by verifying credentials and showing the appropriate screens
     private void onLogin() {
         Stage stage = (Stage) login_btn.getScene().getWindow();
         String username = username_id.getText();
@@ -73,12 +78,11 @@ public class LoginController  implements Initializable {
 
         try {
             if (verifyLoginCredentials(username, password)) {
-
                 Model.getInstance().getViewFactory().showClientDashboard();
-               if (getSuccessfulLogin()) {
-                   Model.getInstance().getViewFactory().closeStage(stage);
-               }
-           } else {
+                if (getSuccessfulLogin()) {
+                    Model.getInstance().getViewFactory().closeStage(stage);
+                }
+            } else {
                 if (driver.verifyDatabaseIsCreated()) {
                     String error = "Invalid username or password";
                     error_lbl.setText(error);
@@ -86,14 +90,14 @@ public class LoginController  implements Initializable {
                     Model.getInstance().getViewFactory().showCreateAccountScreen();
                     Model.getInstance().getViewFactory().closeStage(stage);
                 }
-           }
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        /*Model.getInstance().getViewFactory().showClientDashboard();*/
-//        Model.getInstance().getViewFactory().closeStage(stage);
     }
-    private boolean verifyLoginCredentials(String username, String password){
+
+    // Verifies login credentials by querying the database
+    private boolean verifyLoginCredentials(String username, String password) {
         String query = "SELECT username, password FROM people WHERE username = ? AND password = ?";
 
         try (Connection conn = DriverManager.getConnection(DatabaseDriver.getDbUrl());
@@ -107,8 +111,7 @@ public class LoginController  implements Initializable {
             if (rs.next()) {
                 setSuccessfulLogin(true);
                 return getSuccessfulLogin();
-            }
-            else {
+            } else {
                 setSuccessfulLogin(false);
             }
         } catch (SQLException e) {
@@ -118,7 +121,15 @@ public class LoginController  implements Initializable {
         return getSuccessfulLogin();
     }
 
-    public boolean getSuccessfulLogin() { return successfulLogin; }
-    public void setSuccessfulLogin(boolean successfulLogin) { this.successfulLogin = successfulLogin; }
+    // Returns whether login was successful
+    public boolean getSuccessfulLogin() {
+        return successfulLogin;
+    }
+
+    // Sets the successfulLogin flag
+    public void setSuccessfulLogin(boolean successfulLogin) {
+        this.successfulLogin = successfulLogin;
+    }
 }
+
 

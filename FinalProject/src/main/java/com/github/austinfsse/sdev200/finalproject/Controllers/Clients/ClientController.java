@@ -27,7 +27,7 @@ public class ClientController implements Initializable {
     User user = User.getInstance();
     String[] userInfo = new String[7];
 
-
+    // Initializes the client dashboard with user information and sets up button actions
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("Initializing Client");
@@ -40,16 +40,11 @@ public class ClientController implements Initializable {
         usr_email_lbl.setText("Email: " + user.getEmail());
         current_ba_lbl.setText("Current Balance: " + user.getBalance());
 
-        deposit_btn.setOnAction(e -> {
-            onDeposit();
-        });
-        withdraw_btn.setOnAction(e -> {
-            onWithdraw();
-        });
-
-
+        deposit_btn.setOnAction(e -> onDeposit());
+        withdraw_btn.setOnAction(e -> onWithdraw());
     }
 
+    // Handles the withdrawal process, ensuring valid input and updating the user balance
     private void onWithdraw() {
         int balance = Integer.parseInt(user.getBalance());
         int money = Integer.parseInt(money_fld.getText());
@@ -67,6 +62,7 @@ public class ClientController implements Initializable {
         driver.updateBalance(user.getUsername(), balance); // Update the balance in the database
     }
 
+    // Handles the deposit process, ensuring valid input and updating the user balance
     private void onDeposit() {
         int balance = Integer.parseInt(user.getBalance());
         int money = Integer.parseInt(money_fld.getText());
@@ -81,3 +77,5 @@ public class ClientController implements Initializable {
         driver.updateBalance(user.getUsername(), balance); // Update the balance in the database
     }
 }
+
+

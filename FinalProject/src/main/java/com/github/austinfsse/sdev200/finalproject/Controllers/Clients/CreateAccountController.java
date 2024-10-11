@@ -13,7 +13,6 @@ import java.util.ResourceBundle;
 
 public class CreateAccountController implements Initializable {
 
-
     DatabaseDriver databaseDriver = new DatabaseDriver();
 
     public TextField fname_fld;
@@ -22,8 +21,7 @@ public class CreateAccountController implements Initializable {
     public TextField pwd_fld;
     public Button create_acc_btn;
 
-
-
+    // Initializes the account creation screen and handles account creation when the button is clicked
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -38,9 +36,12 @@ public class CreateAccountController implements Initializable {
         });
     }
 
+    // Generates the username using the first and last names
     public StringBuilder getUserName(String firstName, String lastName) {
-       return generateUserName(firstName, lastName);
+        return generateUserName(firstName, lastName);
     }
+
+    // Helper method to construct a username based on the first letter of the first name, full last name, and random numbers
     private StringBuilder generateUserName(String firstname, String lastname) {
         StringBuilder userName = new StringBuilder();
         userName.append("@");
@@ -50,16 +51,17 @@ public class CreateAccountController implements Initializable {
         return userName;
     }
 
+    // Generates a random number to append to the username
     private int generateRandomNumbers() {
         Random rand = new Random();
         return rand.nextInt(26);
     }
 
+    // Navigates to the client dashboard after the account is successfully created
     private void onClientDashboard() {
         Stage stage = (Stage) create_acc_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().showLoginWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
     }
-
-
 }
+

@@ -23,7 +23,7 @@ public class ForgotLoginInfo implements Initializable {
     public Label usr_pwd_lbl;
     public Button login_btn;
 
-
+    // Initializes the forgot login info screen, setting actions for submit and login buttons
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         submit.setOnAction(e -> onSubmit());
@@ -34,26 +34,24 @@ public class ForgotLoginInfo implements Initializable {
         });
     }
 
+    // Handles the logic for submitting the form to retrieve username and password
     private void onSubmit() {
-
         String fname = fname_fld.getText();
         String lname = lname_fld.getText();
         String email = email_fld.getText();
         String query = "SELECT * FROM people WHERE firstname= ? AND lastname= ? AND email= ?";
+
         try (Connection conn = DriverManager.getConnection(DatabaseDriver.getDbUrl());
-        PreparedStatement ps = conn.prepareStatement(query)) {
+             PreparedStatement ps = conn.prepareStatement(query)) {
+
             ps.setString(1, fname);
             ps.setString(2, lname);
             ps.setString(3, email);
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                System.out.println(rs.getString("firstname"));
-                System.out.println(rs.getString("lastname"));
-                System.out.println(rs.getString("email"));
-                usr_pwd_lbl.setText("Great! Username is " +
-                        rs.getString("username") + " Password is " +
-                        rs.getString("password"));
+                usr_pwd_lbl.setText("Great! Username is " + rs.getString("username") +
+                        " Password is " + rs.getString("password"));
             } else {
                 error_lbl.setVisible(true);
                 error_lbl.setText("Invalid credentials");
@@ -64,3 +62,4 @@ public class ForgotLoginInfo implements Initializable {
         }
     }
 }
+
