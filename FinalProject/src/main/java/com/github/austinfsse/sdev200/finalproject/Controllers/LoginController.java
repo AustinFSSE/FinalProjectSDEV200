@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
-    DatabaseDriver driver = new DatabaseDriver();
+    public DatabaseDriver driver = new DatabaseDriver();
     public String[] userInfo = new String[10];
     public TextField username_id;
     public TextField password_id;
@@ -40,7 +40,7 @@ public class LoginController implements Initializable {
     }
 
     // Opens the Create Account screen and closes the current window
-    private void onCreateAccount() {
+    public void onCreateAccount() {
         Stage stage = (Stage) createAccount_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().showCreateAccountScreen();
         Model.getInstance().getViewFactory().closeStage(stage);
@@ -61,7 +61,7 @@ public class LoginController implements Initializable {
     }
 
     // Handles the login process by verifying credentials and showing the appropriate screens
-    private void onLogin() {
+    public void onLogin() {
         Stage stage = (Stage) login_btn.getScene().getWindow();
         String username = username_id.getText();
         String password = password_id.getText();
@@ -97,7 +97,7 @@ public class LoginController implements Initializable {
     }
 
     // Verifies login credentials by querying the database
-    private boolean verifyLoginCredentials(String username, String password) {
+    public boolean verifyLoginCredentials(String username, String password) {
         String query = "SELECT username, password FROM people WHERE username = ? AND password = ?";
 
         try (Connection conn = DriverManager.getConnection(DatabaseDriver.getDbUrl());
