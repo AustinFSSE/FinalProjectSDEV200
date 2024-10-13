@@ -22,6 +22,11 @@ This is a JavaFX application developed using Java version 21. The application is
 - mvn javafx:run
 - mvn test
 
+## UML & Flowchart
+![image](https://github.com/user-attachments/assets/1e7f1011-d2f5-4191-8e0a-1fbb4bb97a8d)
+
+
+
 ## Dependencies
 
 The following dependencies are required for the project:
